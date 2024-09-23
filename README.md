@@ -5,17 +5,8 @@ This project is a blockchain-based supply chain management system implemented us
 ## Table of Contents
 
 - [Project Overview](#project-overview)
-- [Folder Structure](#folder-structure)
 - [Pre-requisites](#pre-requisites)
 - [Setup and Installation](#setup-and-installation)
-- [Hardhat Commands](#hardhat-commands)
-- [Frontend Setup](#frontend-setup)
-- [Smart Contract Interaction](#smart-contract-interaction)
-  - [Add Product](#add-product)
-  - [Update Product Location](#update-product-location)
-  - [Verify Product](#verify-product)
-- [Deployment](#deployment)
-- [What Next](#what-next)
 
 ---
 
@@ -28,11 +19,6 @@ This project tracks the life cycle of a product from manufacture to distribution
 3. **Customer**: Verifies the authenticity of products by retrieving product details from the blockchain.
 
 ---
-
-## Folder Structure
-
-. ├── artifacts/ ├── build-info/ ├── cache/ │ └── solidity-files-cache.json ├── contracts/ │ └── SupplyChain.sol ├── frontend/ │ ├── components/ │ │ ├── Manufacturer.jsx │ │ ├── Supplier.jsx │ │ └── Customer.jsx ├── node_modules/ ├── scripts/ │ └── deploy.js ├── test/ │ └── Lock.js ├── .gitignore ├── hardhat.config.js ├── package-lock.json ├── package.json └── README.md
-
 
 - **contracts**: Contains the Solidity smart contract `SupplyChain.sol`.
 - **frontend**: React components to interact with the blockchain (Manufacturer, Supplier, Customer).
@@ -56,14 +42,14 @@ To run this project, ensure you have the following installed:
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
-   cd <repository-folder>
+   git clone https://github.com/BhavyaMPatel/Counterfeit-Prevention-in-Supply-Chains-Using-Blockchain
+   cd Counterfeit-Prevention-in-Supply-Chains-Using-Blockchain
 
 2. **Run the command**:
-  ```npm install
-  ```npx hardhat compile
-  ```npx hardhat node
+  ```bash
+  npx hardhat compile
+  npx hardhat node
   **open another terminal**
-  ```npx hardhat run scripts/deploy.js --network localhost
+  npx hardhat run scripts/deploy.js --network localhost
   **U WILL FIND CONTRACT ADDRESS COPY THAT**
   **OPEN web3.js in frontend folder**
