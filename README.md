@@ -47,15 +47,37 @@ To run this project, ensure you have the following installed:
 
 2. **Run the command**:
   ```bash
-  npx hardhat compile
-  npx hardhat node
-  **open another terminal**
-  npx hardhat run scripts/deploy.js --network localhost
-  **U WILL FIND CONTRACT ADDRESS COPY THAT**
-  **OPEN web3.js in frontend folder**
+  1. npx hardhat compile
+  After running this command u will find artifacts folder is created in that folder 
+  go to contract folder and copy contents of SupplyChain.json and
+  past it into ./frontend/src/SupplyChain.json 
 
-  **open anthore terminal**
-  **cd into frontend folder**
-  ** run npm i**
+  2. npx hardhat node (Keep This Running)
+  
+  open another terminal
+
+  3. npx hardhat run scripts/deploy.js --network localhost
+  
+  Copy Contract Addres and Paste it into ./frontend/src/web3.js
+
+  open anthore terminal
+  
+  4. cd into frontend folder
+    run npm i
   
 3. **Open MetaMask and Configure hardhat account**
+  ```bash
+  manually configure blockchain network in metamask
+  Network Name  : Hardhat
+  New RPC URL : https://localhost:8545
+  Chain ID : 31337
+  Currency : ETH
+  -Save It-
+
+  -Select HardHat as a Network in metamask
+
+  when u run npx hardhat node u will some accounts 
+  copy one account address and import that account into 
+  metamask
+
+  now u can run frontend using npm run dev into frontend folder
