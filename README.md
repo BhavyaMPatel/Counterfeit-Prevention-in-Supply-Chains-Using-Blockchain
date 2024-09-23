@@ -67,3 +67,9 @@ To run this project, ensure you have the following installed:
   ```npx hardhat run scripts/deploy.js --network localhost
   **U WILL FIND CONTRACT ADDRESS COPY THAT**
   **OPEN web3.js in frontend folder**
+
+  **open anthore terminal**
+  **cd into frontend folder**
+  ** run npm i**
+  
+3. **Open MetaMask and Configure hardhat account**
