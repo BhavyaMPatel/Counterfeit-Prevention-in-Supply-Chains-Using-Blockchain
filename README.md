@@ -65,8 +65,8 @@ To run this project, ensure you have the following installed:
   4. cd into frontend folder
     run npm i
   
-3. **Open MetaMask and Configure hardhat account**
-  ```bash
+3. **Open MetaMask and Configure hardhat account**:
+
   manually configure blockchain network in metamask
   Network Name  : Hardhat
   New RPC URL : https://localhost:8545
