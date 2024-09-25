@@ -44,6 +44,7 @@ To run this project, ensure you have the following installed:
    ```bash
    git clone https://github.com/BhavyaMPatel/Counterfeit-Prevention-in-Supply-Chains-Using-Blockchain
    cd Counterfeit-Prevention-in-Supply-Chains-Using-Blockchain
+   run npm install
 
 2. **Run the command**:
   ```bash
@@ -65,9 +66,8 @@ To run this project, ensure you have the following installed:
   4. cd into frontend folder
     run npm i
   
-3. **Open MetaMask and Configure hardhat account**
-  ```bash
-  
+3. **Open MetaMask and Configure hardhat account**:
+
   manually configure blockchain network in metamask
   Network Name  : Hardhat
   New RPC URL : https://localhost:8545
