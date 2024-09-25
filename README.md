@@ -67,6 +67,7 @@ To run this project, ensure you have the following installed:
   
 3. **Open MetaMask and Configure hardhat account**
   ```bash
+  
   manually configure blockchain network in metamask
   Network Name  : Hardhat
   New RPC URL : https://localhost:8545
