@@ -2,15 +2,22 @@ import React from "react";
 import Manufacturer from "./Components/Manufacturer";
 import Supplier from "./Components/Supplier";
 import Customer from "./Components/Customer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./Components/Navbar";
+import Home from "./Components/HomePage";
 
 const App = () => {
   return (
     <div>
-      {/* <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8"> */}
-        <Manufacturer />
-        <Supplier />
-        <Customer />
-      {/* </div> */}
+      <BrowserRouter>
+        <Navbar/>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/manufacturer" element={<Manufacturer />} />
+          <Route path="/supplier" element={<Supplier />} />
+          <Route path="/customer" element={<Customer />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };
