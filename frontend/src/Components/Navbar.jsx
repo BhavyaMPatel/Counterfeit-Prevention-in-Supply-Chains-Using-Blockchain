@@ -30,6 +30,10 @@ export default function Navbar() {
             >
               Customer
             </Link>
+          
+          <Link to="/qrcode" className="text-gray-600 hover:text-blue-500 transition duration-300">QR Code Generator</Link>
+        
+
           </div>
 
           {/* Mobile Menu Button */}
@@ -81,6 +85,11 @@ export default function Navbar() {
           >
             Customer
           </Link>
+
+          <Link to="/qrcode" className="block text-gray-600 hover:bg-gray-50 hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">QR Code Generator</Link>
+        
+
+
         </div>
       </div>
     </nav>

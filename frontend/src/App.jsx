@@ -5,6 +5,7 @@ import Customer from "./Components/Customer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Home from "./Components/HomePage";
+import QRCodeGenerator from "./Components/QrCode";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/manufacturer" element={<Manufacturer />} />
           <Route path="/supplier" element={<Supplier />} />
           <Route path="/customer" element={<Customer />} />
+          <Route path="/qrcode" element={<QRCodeGenerator />} />
         </Routes>
       </BrowserRouter>
     </div>

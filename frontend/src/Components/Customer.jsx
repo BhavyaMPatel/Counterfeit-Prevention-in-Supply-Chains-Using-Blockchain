@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { loadBlockchainData } from "../web3"; // Import ethers.js setup
+import { loadBlockchainData } from "../web3";
+import QrScanner from "qr-scanner"; // For scanning QR codes
 
 const Customer = () => {
   const [productID, setProductID] = useState("");
   const [productDetails, setProductDetails] = useState(null);
   const [contract, setContract] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [qrCodeFile, setQrCodeFile] = useState(null);
 
   useEffect(() => {
     const initBlockchain = async () => {
@@ -25,7 +27,6 @@ const Customer = () => {
     try {
       setLoading(true);
       console.log("Fetching product details for ID:", productID);
-      // Convert productID to string
       const details = await contract.getProduct(String(productID));
       console.log("Product details:", details);
       setProductDetails(details);
@@ -34,6 +35,30 @@ const Customer = () => {
       alert("Failed to get product details. Please try again.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  // Handle QR Code File Upload
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setQrCodeFile(file);
+    decodeQRCode(file);
+  };
+
+  // Decode QR Code to Extract Product ID
+  const decodeQRCode = async (file) => {
+    try {
+      const result = await QrScanner.scanImage(file);
+      if (result) {
+        console.log("Decoded QR Code result:", result.data);
+        setProductID(result.data.trim()); // Set product ID from QR code, trim to remove whitespace
+        getProductDetails(); // Fetch details automatically
+      } else {
+        alert("Failed to decode QR Code. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error decoding QR Code:", error);
+      alert("Failed to decode QR Code.");
     }
   };
 
@@ -54,7 +79,7 @@ const Customer = () => {
           <ol className="list-decimal ml-5 space-y-1">
             <li>Enter the product's unique ID in the input box below.</li>
             <li>Click "Verify" to fetch product details from the blockchain.</li>
-            <li>Review the product information to verify its authenticity.</li>
+            <li>Or, upload a QR code to automatically extract the product ID.</li>
           </ol>
         </div>
 
@@ -80,14 +105,33 @@ const Customer = () => {
           {loading ? "Fetching Details..." : "Verify"}
         </button>
 
+        {/* File Upload Section */}
+        <div className="mt-4">
+          <label className="block text-sm font-medium text-gray-700">
+            Or upload a QR code file:
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none mt-2"
+          />
+        </div>
+
         {/* Product Details Section */}
         {productDetails && (
-          <div className="bg-gray-100 mt-6 p-6 rounded-lg shadow-md">
-            <h3 className="text-xl font-bold text-gray-700 mb-4">Product Details:</h3>
+          <div className="bg-gray-100 mt-4 p-4 rounded">
             <p><strong>Product Name:</strong> {productDetails[0]}</p>
             <p><strong>Product ID:</strong> {productDetails[1]}</p>
             <p><strong>Date of Manufacture:</strong> {productDetails[2]}</p>
-            <p><strong>Current Location:</strong> {productDetails[3]}</p>
+            <div>
+              <strong>Locations:</strong>
+              <ul className="list-disc ml-4">
+                {productDetails[3].map((location, index) => (
+                  <li key={index}>{location}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         )}
       </div>
